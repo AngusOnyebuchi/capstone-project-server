@@ -28,13 +28,14 @@ const server = http.createServer((req,res)=> {
         platform: os.platform(),
         architecture: os.arch(),
         numberOfCPUS: os.cpus(),
+        
         networkInterfaces: os.networkInterfaces(),
         uptime: os.uptime()
     }
     json = JSON.stringify(json)
     fs.writeFile('./osinfo.json', json, (err) => {
-        res.writeHead(201, {'Content-Type': 'text/plain'})
-        res.write('Your OS info has been saved successfully!')
+        if (!err) {console.log('Your OS info has been saved successfullyui!')}
+        res.writeHead(201, {'Content-Type': 'text/plain text'})
         return res.end()
     })
     }

@@ -33,8 +33,8 @@ const server = http.createServer((req,res)=> {
     }
     json = JSON.stringify(json)
     fs.writeFile('./osinfo.json', json, (err) => {
+        if (!err) {console.log('Your OS info has been saved successfully!')}
         res.writeHead(201, {'Content-Type': 'text/plain'})
-        res.write('Your OS info has been saved successfully!')
         return res.end()
     })
     }
